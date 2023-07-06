@@ -98,10 +98,15 @@ const Tree = (() => {
     //     //prettyPrint(this.root);
     //     return root;
     // };
+    function insertNode (value) {
+        let node = new Node(value);
+        
+    }
     return {
         root,
         prettyPrint,
-        buildTree
+        buildTree,
+        insertNode
     }
 })
 
