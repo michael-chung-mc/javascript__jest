@@ -42,6 +42,15 @@ const Tree = (() => {
     //     var mid = Math.floor((start + end)/2);
 
     // }
+    function deepCopy (parent) {
+        if (parent == null) { return null; }
+        let node = new Node(parent.data);
+        //console.log("deep copy" + parent.data);
+        node.left = deepCopy(parent.left);
+        node.right = deepCopy(parent.right);
+        //console.log(node);
+        return node;
+    };
     function buildTree (inputArray) {
         function buildTreeFromUnique(sortedArray, start, end) {
             if (start > end) { return null; }
@@ -58,8 +67,8 @@ const Tree = (() => {
         arr = arr.filter((item, index) => {return arr.indexOf(item) === index});
         //arr = JSON.parse(JSON.stringify(arr.filter((item, index) => {return arr.indexOf(item) === index})));
         console.log(arr)
-        this.root = buildTreeFromUnique(arr, 0, arr.length);
-    }
+        this.root = buildTreeFromUnique(arr, 0, arr.length-1);
+    };
     // function buildTree(dataArray) {
     //     function buildTreeFromUnique(sortedArray) {
     //         if (sortedArray.length == 0) { return null; }
@@ -98,10 +107,29 @@ const Tree = (() => {
     //     //prettyPrint(this.root);
     //     return root;
     // };
-    function insertNode (value) {
-        let node = new Node(value);
-        
-    }
+    function insertNode (node) {
+        console.log("inserting: " + node.data);
+        let nodeParent = null;
+        let pointer = this.root;
+        //let pointer = deepCopy(this.root);
+        //prettyPrint(pointer);
+        while (pointer != null)
+        {
+            nodeParent = pointer;
+            if (node.data < pointer.data) { pointer = pointer.left; }
+            else if (node.data > pointer.data) {pointer = pointer.right;}
+            else if (node.data == pointer.data) { return; }
+        }
+        console.log(nodeParent);
+        if (nodeParent == null) {
+            let oldRoot = this.root;
+            if (node.data < oldRoot.data) {node.right = oldRoot; }
+            else {node.left = oldRoot; }
+            this.root = node;
+        }
+        else if (node.data < nodeParent.data) {nodeParent.left = node; }
+        else {nodeParent.right = node; }
+    };
     return {
         root,
         prettyPrint,
@@ -121,6 +149,9 @@ const Driver = (() => {
     }
     const bst = Tree();
     bst.buildTree(randomArray(10));
+    bst.prettyPrint(bst.root);
+    console.log(bst.root);
+    bst.insertNode(new Node(1124));
     bst.prettyPrint(bst.root);
     console.log(bst.root);
 })();
