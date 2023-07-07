@@ -108,7 +108,7 @@ const Tree = (() => {
     //     return root;
     // };
     function insertNode (node) {
-        console.log("inserting: " + node.data);
+        console.log("inserting: " + node.data + " to " + this.root);
         let nodeParent = null;
         let pointer = this.root;
         //let pointer = deepCopy(this.root);
@@ -130,11 +130,15 @@ const Tree = (() => {
         else if (node.data < nodeParent.data) {nodeParent.left = node; }
         else {nodeParent.right = node; }
     };
+    function insertValue (value) {
+        this.insertNode(new Node(value));
+    };
     return {
         root,
         prettyPrint,
         buildTree,
-        insertNode
+        insertNode,
+        insertValue
     }
 })
 
@@ -151,7 +155,7 @@ const Driver = (() => {
     bst.buildTree(randomArray(10));
     bst.prettyPrint(bst.root);
     console.log(bst.root);
-    bst.insertNode(new Node(1124));
+    bst.insertValue(1124);
     bst.prettyPrint(bst.root);
     console.log(bst.root);
 })();
