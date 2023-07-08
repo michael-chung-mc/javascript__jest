@@ -1,26 +1,35 @@
 const Main = (() => {
-    function getRandomArray(length,bound) {
-        let arr = [];
-        for (let i = 0; i < length; i++)
+    function getRandom(bound) {
+        return Math.floor((Math.random()* bound));
+    };
+    function fibs (length) {
+        let arr = [0];
+        if (length == 1) { return arr; }
+        arr.push(1);
+        if (length == 2) { return arr; }
+        for (let i = arr.length-1; i < length-1; i++)
         {
-            arr.push(Math.floor((Math.random()* bound)));
+            arr.push(arr[i] + arr[i-1]);
         }
         return arr;
-    };
-    function fibs (arr) {
-        let sum = 0;
-        for (let i =0; i < arr.length; i++)
-        {
-            sum += arr[i];
-        }
-        return sum;
     }
-    function fibsRec (arr, start) {
-        if (start >= arr.length) { return 0; }
-        return arr[start] + fibsRec(arr, start + 1);
+    function fibsRec (length) {
+        if (length < 0) {return;}
+        else if (length == 1) { return 0; }
+        else if (length == 2) { return 1; }
+        return fibsRec(length-2) + fibsRec(length-1);
     };
-    input = getRandomArray(10,11);
+    function fibsRecArr(length) {
+        let arr = []
+        for (let i = 0; i < length; i++)
+        {
+            arr.push(fibsRec(length));
+        }
+        return arr;
+    }
+    let input = getRandom(11);
+    input = 3;
     console.log(input);
     console.log(fibs(input))
-    console.log(fibsRec(input,0))
+    console.log(fibsRecArr(input))
 })();
