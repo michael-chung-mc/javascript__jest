@@ -98,10 +98,47 @@ class LinkedList {
             return str;
         }
         this.insertAt = function (value, index) {
-            let parent = this.at(index-1);
-            let newNode = new Node(value, parent.next);
-            parent.next = newNode;
-
+            if (index < 0 || index > this.size() ) { return; }
+            if (index == 1)
+            {
+                this.prepend(value);
+            }
+            else
+            {
+                let node = this.at(index-1);
+                if (node)
+                {
+                    if (node.next)
+                    {
+                        let newNode = new Node(value, node.next);
+                        node.next = newNode;
+                    }
+                    else
+                    {
+                        this.append(value);
+                    }
+                }
+            }
+        }
+        this.removeAt = function (index) {
+            if (index < 0 || index > this.size() ) { return; }
+            if (index == 1)
+            {
+                this.first = this.first.next ? this.first.next : null
+            }
+            else
+            {
+                let parent = this.at(index-1);
+                let grandchild = parent.next ? parent.next.next : null;
+                if (grandchild)
+                {
+                    parent.next = grandchild;
+                }
+                else
+                {
+                    parent.next = null
+                }
+            }
         }
     }
 }
@@ -143,5 +180,20 @@ const Main = (() => {
     console.log(list.find(1));
     console.log(list.find(4));
     console.log(list.toString());
-    console.log(list.insertAt(1));
+    list.insertAt(761,1);
+    console.log(list.toString());
+    list.insertAt(763,3);
+    console.log(list.toString());
+    list.insertAt(762,2);
+    console.log(list.toString());
+    list.insertAt(764,4);
+    console.log(list.toString());
+    list.removeAt(1);
+    console.log(list.toString());
+    list.removeAt(5);
+    console.log(list.toString());
+    list.removeAt(6);
+    console.log(list.toString());
+    list.removeAt(3);
+    console.log(list.toString());
 })();
