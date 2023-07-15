@@ -133,9 +133,12 @@ class Tree
             else if (node.value < nodeParent.value) {nodeParent.left = node; }
             else {nodeParent.right = node; }
         };
-        this.insertValue = function (value) {
+        this.insert = function (value) {
             this.insertNode(new Node(value));
         };
+        this.delete = function (value) {
+            
+        }
         this.find = function (value) {
             let pointer = this.root;
             while (pointer != null)
@@ -150,6 +153,19 @@ class Tree
             }
             return null;
         }
+        this.levelOrder = function (func) {
+            let q = [];
+            q.push(this.root);
+            while (q.length > 0){
+                let inspect = q.pop();
+                if (inspect != null && inspect.value != undefined)
+                {
+                    func(inspect);
+                }
+                if (inspect.right != null) {q.push(inspect.right);};
+                if (inspect.left != null) {q.push(inspect.left);};
+            }
+        };
     }
 }
 
@@ -169,8 +185,9 @@ const Driver = (() => {
     bst.prettyPrint(bst.root);
     console.log(bst.find(4));
     console.log(bst.root);
-    bst.insertValue(1124);
+    bst.insert(1124);
     bst.prettyPrint(bst.root);
     console.log(bst.root);
     console.log(bst.find(4));
+    bst.levelOrder((node)=>{console.log(node);});
 })();
