@@ -8,10 +8,10 @@ test('hello World capitalized to Hello World', () => {
 test('1 hello World capitalized to 1 hello World', () => {
     expect(capitalize("1 hello World")).toBe("1 hello World");
 });
-test(' capitalized to ', () => {
+test('"" capitalized to ""', () => {
     expect(capitalize("")).toBe("");
 });
-test('  capitalized to  ', () => {
+test('" "capitalized to " "', () => {
     expect(capitalize(" ")).toBe(" ");
 });
 test('-hello capitalized to  -hello', () => {
