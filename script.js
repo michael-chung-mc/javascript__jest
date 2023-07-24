@@ -166,6 +166,38 @@ class Tree
                 if (inspect.left != null) {q.push(inspect.left);};
             }
         };
+        this.preOrder = function (func) {
+            let s = [];
+            s.push(this.root);
+            while (s.length > 0) {
+                let inspect = s.pop(s.length-1);
+                if (inspect != null && inspect.value != undefined)
+                {
+                    func(inspect);
+                }
+                if (inspect.left != null) {s.push(inspect.left);};
+                if (inspect.right != null) {s.push(inspect.right);};
+            }
+        }
+        this.postTraverse = function (node, func) {
+            if (node != null) {
+                this.postTraverse(node.left, func);
+                this.postTraverse(node.right, func);
+                func(node);
+            }
+        }
+        this.postOrder = function (func) {
+            if (func == null)
+            {
+                let arr = []
+                this.postTraverse(this.root, (node) => { arr.push(node.value); })
+                return arr;
+            }
+            else
+            {
+                this.postTraverse(this.root, func);
+            }
+        }
     }
 }
 
@@ -189,5 +221,14 @@ const Driver = (() => {
     bst.prettyPrint(bst.root);
     console.log(bst.root);
     console.log(bst.find(4));
+    console.log("level-order");
+    console.log(bst.root);
     bst.levelOrder((node)=>{console.log(node);});
+    console.log("pre-order");
+    console.log(bst.root);
+    bst.preOrder((node)=>{console.log(node);});
+    console.log("post-order");
+    console.log(bst.root);
+    bst.postOrder((node)=>{console.log(node);});
+    console.log(bst.postOrder());
 })();
