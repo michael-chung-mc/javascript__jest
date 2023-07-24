@@ -166,17 +166,42 @@ class Tree
                 if (inspect.left != null) {q.push(inspect.left);};
             }
         };
+        this.inTraverse = function (node, func) {
+            if (node != null) {
+                this.inTraverse(node.left, func);
+                func(node);
+                this.inTraverse(node.right, func);
+            }
+        }
+        this.inOrder = function (func) {
+            if (func == null)
+            {
+                let arr = []
+                this.inTraverse(this.root, (node) => { arr.push(node.value); })
+                return arr;
+            }
+            else
+            {
+                this.inTraverse(this.root, func);
+            }
+        }
+        this.preTraverse = function (node, func) {
+            if (node != null) {
+                func(node);
+                this.preTraverse(node.left, func);
+                this.preTraverse(node.right, func);
+            }
+        }
         this.preOrder = function (func) {
-            let s = [];
-            s.push(this.root);
-            while (s.length > 0) {
-                let inspect = s.pop(s.length-1);
-                if (inspect != null && inspect.value != undefined)
-                {
-                    func(inspect);
-                }
-                if (inspect.left != null) {s.push(inspect.left);};
-                if (inspect.right != null) {s.push(inspect.right);};
+            if (func == null)
+            {
+                let arr = []
+                this.preTraverse(this.root, (node) => { arr.push(node.value); })
+                return arr;
+            }
+            else
+            {
+                this.preTraverse(this.root, func);
             }
         }
         this.postTraverse = function (node, func) {
@@ -224,9 +249,14 @@ const Driver = (() => {
     console.log("level-order");
     console.log(bst.root);
     bst.levelOrder((node)=>{console.log(node);});
+    console.log("in-order");
+    console.log(bst.root);
+    bst.inOrder((node)=>{console.log(node);});
+    console.log(bst.inOrder());
     console.log("pre-order");
     console.log(bst.root);
     bst.preOrder((node)=>{console.log(node);});
+    console.log(bst.preOrder());
     console.log("post-order");
     console.log(bst.root);
     bst.postOrder((node)=>{console.log(node);});
