@@ -239,6 +239,12 @@ class Tree
             }
             return Math.max(1 + this.height(node.left), 1 + this.height(node.right));
         }
+        this.depth = function (node) {
+            return this.height(this.root) - this.height(node);
+        }
+        this.balanced = function () {
+            return Math.abs(this.height(this.root.left) - this.height(this.root.right)) < 2;
+        }
     }
 }
 
@@ -279,4 +285,7 @@ const Driver = (() => {
     bst.postOrder((node)=>{console.log(node);});
     console.log(bst.postOrder());
     console.log(bst.height(bst.root));
+    console.log(bst.depth(bst.root.left));
+    console.log("balanced");
+    console.log(bst.balanced());
 })();
