@@ -154,6 +154,11 @@ class Tree
             return null;
         }
         this.levelOrder = function (func) {
+            let arr = []
+            if (func == null)
+            {
+                func = (node) => { arr.push(node.value) }
+            }
             let q = [];
             q.push(this.root);
             while (q.length > 0){
@@ -164,6 +169,10 @@ class Tree
                 }
                 if (inspect.right != null) {q.push(inspect.right);};
                 if (inspect.left != null) {q.push(inspect.left);};
+            }
+            if (arr.length > 0)
+            {
+                return arr;
             }
         };
         this.inTraverse = function (node, func) {
@@ -223,6 +232,13 @@ class Tree
                 this.postTraverse(this.root, func);
             }
         }
+        this.height = function (node) {
+            if (node == null)
+            {
+                return 0
+            }
+            return Math.max(1 + this.height(node.left), 1 + this.height(node.right));
+        }
     }
 }
 
@@ -249,6 +265,7 @@ const Driver = (() => {
     console.log("level-order");
     console.log(bst.root);
     bst.levelOrder((node)=>{console.log(node);});
+    console.log(bst.levelOrder());
     console.log("in-order");
     console.log(bst.root);
     bst.inOrder((node)=>{console.log(node);});
@@ -261,4 +278,5 @@ const Driver = (() => {
     console.log(bst.root);
     bst.postOrder((node)=>{console.log(node);});
     console.log(bst.postOrder());
+    console.log(bst.height(bst.root));
 })();
