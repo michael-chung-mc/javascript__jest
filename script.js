@@ -1,12 +1,19 @@
-class Node
-{
-    constructor(value)
-    {
-        this.value = value;
-        this.left = null;
-        this.right = null;
+function Node (value) {
+    return {
+        value: value,
+        left: null,
+        right: null,
     }
 }
+// class Node
+// {
+//     constructor(val)
+//     {
+//         this.value = val;
+//         this.left = null;
+//         this.right = null;
+//     }
+// }
 // function NodeFactory (value) {
 //     return {
 //         value: value,
@@ -19,7 +26,10 @@ class Tree
     constructor ()
     {
         this.root = null;
-        this.prettyPrint = function (node) {
+        this.getRoot = function () {
+            return this.root;
+        }
+        this.prettyPrint = function () {
         //  console.log(node);
         //     if (node == null) { return; };
         //     console.log(node.value);
@@ -27,15 +37,15 @@ class Tree
         //     console.log(node.value + " l:" + prettyPrint(node.left));
             let flat = ""
             let q = [];
-            q.push(node);
+            q.push(this.root);
             while (q.length > 0){
-                let inspect = q.pop();
+                let inspect = q.shift();
                 if (inspect != null && inspect.value != undefined)
                 {
                     flat += inspect.value;
                 }
-                if (inspect.right != null) {q.push(inspect.right);};
                 if (inspect.left != null) {q.push(inspect.left);};
+                if (inspect.right != null) {q.push(inspect.right);};
                 flat += "-";
             }
             console.log(flat);
@@ -45,32 +55,32 @@ class Tree
         //     var mid = Math.floor((start + end)/2);
     
         // }
-        this.deepCopy = function (parent) {
-            if (parent == null) { return null; }
-            let node = new Node(parent.value);
-            //console.log("deep copy" + parent.value);
-            node.left = deepCopy(parent.left);
-            node.right = deepCopy(parent.right);
+        // this.deepCopy = function (parent) {
+        //     if (parent == null) { return null; }
+        //     let node = new Node(parent.value);
+        //     //console.log("deep copy" + parent.value);
+        //     node.left = deepCopy(parent.left);
+        //     node.right = deepCopy(parent.right);
+        //     //console.log(node);
+        //     return node;
+        // };
+        this.buildTreeFromUnique = function (sortedArray, start, end) {
+            if (start > end) { return null; }
+            let mid = Math.floor((start+end)/2);
+            let node = Node(sortedArray[mid]);
+            node.left = this.buildTreeFromUnique(sortedArray, start, mid - 1);
+            node.right = this.buildTreeFromUnique(sortedArray, mid + 1, end);
             //console.log(node);
             return node;
         };
         this.buildTree = function (inputArray) {
-            function buildTreeFromUnique(sortedArray, start, end) {
-                if (start > end) { return null; }
-                let mid = Math.floor((start+end)/2);
-                let node = new Node(sortedArray[mid]);
-                node.left = buildTreeFromUnique(sortedArray, start, mid - 1);
-                node.right = buildTreeFromUnique(sortedArray, mid + 1, end);
-                //console.log(node);
-                return node;
-            }
             let arr = JSON.parse(JSON.stringify(Array.prototype.slice.call(inputArray)));
             //console.log(arr)
             arr.sort();
             arr = arr.filter((item, index) => {return arr.indexOf(item) === index});
             //arr = JSON.parse(JSON.stringify(arr.filter((item, index) => {return arr.indexOf(item) === index})));
             //console.log(arr)
-            this.root = buildTreeFromUnique(arr, 0, arr.length-1);
+            this.root = this.buildTreeFromUnique(arr, 0, arr.length-1);
         };
         // function buildTree(dataArray) {
         //     function buildTreeFromUnique(sortedArray) {
@@ -182,7 +192,7 @@ class Tree
                 pointer.value = successor.value;
                 successorParent.left = null;
             }
-        }
+        };
         this.find = function (value) {
             let pointer = this.root;
             while (pointer != null)
@@ -192,7 +202,7 @@ class Tree
                 else { return pointer; }
             }
             return null;
-        }
+        };
         this.levelOrder = function (func) {
             let arr = []
             if (func == null)
@@ -221,7 +231,7 @@ class Tree
                 func(node);
                 this.inTraverse(node.right, func);
             }
-        }
+        };
         this.inOrder = function (func) {
             if (func == null)
             {
@@ -233,14 +243,14 @@ class Tree
             {
                 this.inTraverse(this.root, func);
             }
-        }
+        };
         this.preTraverse = function (node, func) {
             if (node != null) {
                 func(node);
                 this.preTraverse(node.left, func);
                 this.preTraverse(node.right, func);
             }
-        }
+        };
         this.preOrder = function (func) {
             if (func == null)
             {
@@ -252,14 +262,14 @@ class Tree
             {
                 this.preTraverse(this.root, func);
             }
-        }
+        };
         this.postTraverse = function (node, func) {
             if (node != null) {
                 this.postTraverse(node.left, func);
                 this.postTraverse(node.right, func);
                 func(node);
             }
-        }
+        };
         this.postOrder = function (func) {
             if (func == null)
             {
@@ -271,7 +281,7 @@ class Tree
             {
                 this.postTraverse(this.root, func);
             }
-        }
+        };
         this.height = function (node) {
             if (node == null)
             {
@@ -281,10 +291,10 @@ class Tree
         }
         this.depth = function (node) {
             return this.height(this.root) - this.height(node);
-        }
+        };
         this.balanced = function () {
             return Math.abs(this.height(this.root.left) - this.height(this.root.right)) < 2;
-        }
+        };
     }
 }
 
@@ -297,51 +307,55 @@ const Driver = (() => {
         }
         return arr;
     }
-    const input = [1,2,3,4,5,6,7,8,9];
-    console.log(input);
     const bst = new Tree();
-    bst.buildTree(input);
     console.log("made tree");
-    bst.prettyPrint(bst.root);
-    console.log(bst.root);
+    console.log(bst.getRoot());
+
+    console.log("grow tree");
+    let input = [1,2,3,4,5,6,7,8,9];
+    console.log(input);
+    bst.buildTree(input);
+    console.log(bst.getRoot());
+    bst.prettyPrint();
+    console.log(bst.getRoot());
 
     console.log("finding 4");
     console.log(bst.find(4));
-    bst.prettyPrint(bst.root);
+    bst.prettyPrint();
 
     console.log("insert 1124");
     bst.insert(1124);
-    console.log(bst.root);
-    bst.prettyPrint(bst.root);
+    console.log(bst.getRoot());
+    bst.prettyPrint();
 
     console.log("delete 2");
     bst.delete(2);
-    console.log(bst.root);
-    bst.prettyPrint(bst.root);
+    console.log(bst.getRoot());
+    bst.prettyPrint();
     console.log("delete 5");
     bst.delete(5);
-    console.log(bst.root);
-    bst.prettyPrint(bst.root);
+    console.log(bst.getRoot());
+    bst.prettyPrint();
     console.log("delete 1124");
     bst.delete(1124);
-    console.log(bst.root);
-    bst.prettyPrint(bst.root);
+    console.log(bst.getRoot());
+    bst.prettyPrint();
 
     console.log(bst.find(4));
     console.log("level-order");
-    console.log(bst.root);
+    console.log(bst.getRoot());
     bst.levelOrder((node)=>{console.log(node);});
     console.log(bst.levelOrder());
     console.log("in-order");
-    console.log(bst.root);
+    console.log(bst.getRoot());
     bst.inOrder((node)=>{console.log(node);});
     console.log(bst.inOrder());
     console.log("pre-order");
-    console.log(bst.root);
+    console.log(bst.getRoot());
     bst.preOrder((node)=>{console.log(node);});
     console.log(bst.preOrder());
     console.log("post-order");
-    console.log(bst.root);
+    console.log(bst.getRoot());
     bst.postOrder((node)=>{console.log(node);});
     console.log(bst.postOrder());
     console.log(bst.height(bst.root));
