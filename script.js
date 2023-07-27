@@ -189,8 +189,17 @@ class Tree
                     successorParent = successor;
                     successor = successor.left;
                 }
-                pointer.value = successor.value;
-                successorParent.left = null;
+                //pointer.value = successor.value;
+                if (this.root.value == value)
+                {
+                    this.root.value = successor.value;
+                    successorParent.left = null;
+                }
+                else
+                {
+                    right ? parent.right = successor : parent.left = successor;
+                    successorParent.left = null;
+                }
             }
         };
         this.find = function (value) {
@@ -358,8 +367,12 @@ const Driver = (() => {
     console.log(bst.getRoot());
     bst.postOrder((node)=>{console.log(node);});
     console.log(bst.postOrder());
-    console.log(bst.height(bst.root));
-    console.log(bst.depth(bst.root.left));
+
+    console.log("height of tree");
+    console.log(bst.height(bst.getRoot()));
+    console.log("height of left");
+    console.log(bst.depth(bst.getRoot().left));
+
     console.log("balanced");
     console.log(bst.balanced());
 })();
