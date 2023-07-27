@@ -75,11 +75,11 @@ class Tree
         };
         this.buildTree = function (inputArray) {
             let arr = JSON.parse(JSON.stringify(Array.prototype.slice.call(inputArray)));
-            //console.log(arr)
-            arr.sort();
+            console.log(arr)
+            arr.sort(function(a,b){return a-b});
             arr = arr.filter((item, index) => {return arr.indexOf(item) === index});
             //arr = JSON.parse(JSON.stringify(arr.filter((item, index) => {return arr.indexOf(item) === index})));
-            //console.log(arr)
+            console.log(arr)
             this.root = this.buildTreeFromUnique(arr, 0, arr.length-1);
         };
         // function buildTree(dataArray) {
@@ -304,10 +304,15 @@ class Tree
         this.balanced = function () {
             return Math.abs(this.height(this.root.left) - this.height(this.root.right)) < 2;
         };
+        this.rebalance = function () {
+            let arr = [];
+            this.postTraverse(this.root, (node) => { arr.push(node.value); })
+            this.buildTree(arr);
+        }
     }
 }
 
-const Driver = (() => {
+const Test = (() => {
     function randomArray(length) {
         arr = []
         for (let i = 0; i < length; i++)
@@ -368,11 +373,26 @@ const Driver = (() => {
     bst.postOrder((node)=>{console.log(node);});
     console.log(bst.postOrder());
 
+    bst.prettyPrint();
     console.log("height of tree");
     console.log(bst.height(bst.getRoot()));
     console.log("height of left");
     console.log(bst.depth(bst.getRoot().left));
 
-    console.log("balanced");
-    console.log(bst.balanced());
+    console.log(`is balanced ${bst.balanced()}`);
+    bst.insert(100);
+    bst.insert(150);
+    console.log(`is balanced ${bst.balanced()}`);
+    console.log(bst.getRoot());
+    bst.prettyPrint();
+
+    console.log("rebalancing");
+    bst.rebalance();
+    console.log(`is balanced ${bst.balanced()}`);
+    console.log(bst.getRoot());
+    bst.prettyPrint();
 })();
+
+const Driver = (() => {
+
+})
