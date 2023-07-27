@@ -60,16 +60,16 @@ class Tree
                 let mid = Math.floor((start+end)/2);
                 let node = new Node(sortedArray[mid]);
                 node.left = buildTreeFromUnique(sortedArray, start, mid - 1);
-                node.right = buildTreeFromUnique(sortedArray, mid+1, end);
+                node.right = buildTreeFromUnique(sortedArray, mid + 1, end);
                 //console.log(node);
                 return node;
             }
             let arr = JSON.parse(JSON.stringify(Array.prototype.slice.call(inputArray)));
-            console.log(arr)
+            //console.log(arr)
             arr.sort();
             arr = arr.filter((item, index) => {return arr.indexOf(item) === index});
             //arr = JSON.parse(JSON.stringify(arr.filter((item, index) => {return arr.indexOf(item) === index})));
-            console.log(arr)
+            //console.log(arr)
             this.root = buildTreeFromUnique(arr, 0, arr.length-1);
         };
         // function buildTree(dataArray) {
@@ -111,7 +111,7 @@ class Tree
         //     return root;
         // };
         this.insertNode = function (node) {
-            console.log("inserting: " + node.value + " to " + this.root);
+            console.log(`inserting: ${node.value} to ${this.root}`);
             let nodeParent = null;
             let pointer = this.root;
             //let pointer = deepCopy(this.root);
@@ -121,9 +121,8 @@ class Tree
                 nodeParent = pointer;
                 if (node.value < pointer.value) { pointer = pointer.left; }
                 else if (node.value > pointer.value) {pointer = pointer.right;}
-                else if (node.value == pointer.value) { return; }
+                else if (node.value == pointer.value) { break; }
             }
-            console.log(nodeParent);
             if (nodeParent == null) {
                 let oldRoot = this.root;
                 if (node.value < oldRoot.value) {node.right = oldRoot; }
@@ -137,19 +136,60 @@ class Tree
             this.insertNode(new Node(value));
         };
         this.delete = function (value) {
-            
+            let parent = this.root;
+            let pointer = this.root;
+            let right = false;
+            while (pointer !=null && pointer.value != value)
+            {
+                parent = pointer;
+                if (pointer.value < value)
+                {
+                    pointer = pointer.right;
+                    right = true;
+                }
+                else if (pointer.value > value)
+                {
+                    pointer = pointer.left;
+                    right = false;
+                }
+            }
+            if (pointer == null)
+            {
+                console.log(`couldn't delete ${value} as it does not exist`)
+                return;
+            }
+            if (pointer.right == null && pointer.left == null)
+            {
+                right ? parent.right = null : parent.left = null;
+            }
+            else if (pointer.right == null && pointer.left != null)
+            {
+                right ? parent.right = pointer.left : parent.left = pointer.left;
+            }
+            else if (pointer.right != null && pointer.left == null)
+            {
+                right ? parent.right = pointer.right : parent.left = pointer.right;
+            }
+            else
+            {
+                let successorParent = pointer;
+                let successor = pointer.right;
+                while (successor.left != null)
+                {
+                    successorParent = successor;
+                    successor = successor.left;
+                }
+                pointer.value = successor.value;
+                successorParent.left = null;
+            }
         }
         this.find = function (value) {
             let pointer = this.root;
             while (pointer != null)
             {
-                console.log(pointer);
                 if (value > pointer.value) { pointer = pointer.right; }
                 else if (value < pointer.value) { pointer = pointer.left; }
-                else {
-                    console.log("found: " + value);
-                    return pointer;
-                }
+                else { return pointer; }
             }
             return null;
         }
@@ -261,12 +301,32 @@ const Driver = (() => {
     console.log(input);
     const bst = new Tree();
     bst.buildTree(input);
+    console.log("made tree");
     bst.prettyPrint(bst.root);
+    console.log(bst.root);
+
+    console.log("finding 4");
     console.log(bst.find(4));
-    console.log(bst.root);
-    bst.insert(1124);
     bst.prettyPrint(bst.root);
+
+    console.log("insert 1124");
+    bst.insert(1124);
     console.log(bst.root);
+    bst.prettyPrint(bst.root);
+
+    console.log("delete 2");
+    bst.delete(2);
+    console.log(bst.root);
+    bst.prettyPrint(bst.root);
+    console.log("delete 5");
+    bst.delete(5);
+    console.log(bst.root);
+    bst.prettyPrint(bst.root);
+    console.log("delete 1124");
+    bst.delete(1124);
+    console.log(bst.root);
+    bst.prettyPrint(bst.root);
+
     console.log(bst.find(4));
     console.log("level-order");
     console.log(bst.root);
