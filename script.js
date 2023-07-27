@@ -313,14 +313,6 @@ class Tree
 }
 
 const Test = (() => {
-    function randomArray(length) {
-        arr = []
-        for (let i = 0; i < length; i++)
-        {
-            arr.push(Math.floor((Math.random()* 11)));
-        }
-        return arr;
-    }
     const bst = new Tree();
     console.log("made tree");
     console.log(bst.getRoot());
@@ -391,8 +383,33 @@ const Test = (() => {
     console.log(`is balanced ${bst.balanced()}`);
     console.log(bst.getRoot());
     bst.prettyPrint();
-})();
+})
 
 const Driver = (() => {
-
-})
+    function randomArray(length) {
+        arr = []
+        for (let i = 0; i < length; i++)
+        {
+            arr.push(Math.floor((Math.random()* 101)));
+        }
+        return arr;
+    }
+    const bst = new Tree();
+    bst.buildTree(randomArray(100));
+    console.log(`is balanced ${bst.balanced()}`);
+    bst.levelOrder((node)=>{console.log(node.value);});
+    bst.preOrder((node)=>{console.log(node.value);});
+    bst.postOrder((node)=>{console.log(node.value);});
+    bst.inOrder((node)=>{console.log(node.value);});
+    for (let i = 0; i < 100; i++)
+    {
+        bst.insert(Math.random()*1001);
+    }
+    console.log(`is balanced ${bst.balanced()}`);
+    bst.rebalance();
+    console.log(`is balanced ${bst.balanced()}`);
+    bst.levelOrder((node)=>{console.log(node.value);});
+    bst.preOrder((node)=>{console.log(node.value);});
+    bst.postOrder((node)=>{console.log(node.value);});
+    bst.inOrder((node)=>{console.log(node.value);});
+})();
