@@ -21,17 +21,14 @@
 * IBM Test-Driven Development Kata
 
 ### What
-
 TDD exploration through various kata.
 
 ### Why
-
 Test Driven Development.
 
 ### How
-* Tech
-    * Javascript
-    * Jest
+* Javascript
+* Jest
 
 ## Roadmap
 - [x] A capitalize function that takes a string and returns it with the first character capitalized.
