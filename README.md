@@ -52,7 +52,7 @@ object == {
 - [x] Fahrenheit to Celsius Conversion Kata
 - [x] Palindrome Kata
 - [X] Stack Kata
-- [ ] Prime Factors Kata
+- [x] Prime Factors Kata
 
 ## Acknowledgements
 * [The Odin Project](https://www.theodinproject.com)
