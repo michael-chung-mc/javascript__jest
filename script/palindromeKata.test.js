@@ -22,5 +22,7 @@ describe("palindrome", ()=> {
     it("error for empty string", ()=>{
         expect(()=>{isPalindrome("")}).toThrowError("Empty Input");
     });
-    it.todo("error for not a string");
+    it("error for not a string", ()=>{
+        expect(()=>{isPalindrome(121)}).toThrowError("NonString Input");
+    });
 })
