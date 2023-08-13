@@ -17,7 +17,7 @@
 </details>
 
 ## About
-IBM Test-driven development Course
+IBM Test-driven development course
 
 ### What
 
@@ -35,8 +35,9 @@ Test Driven Development.
 ## Roadmap
 - [x] Fahrenheit to Celsius Conversion Kata
 - [x] Palindrome Kata
-- [] Stack Kata
-- [] Prime Factors Kata
+- [ ] Stack Kata
+- [ ] Prime Factors Kata
+
 ## Acknowledgements
 * [IBM Garage](https://www.ibm.com/)
 <p align="right">(<a href="#readme-top">back to top </a>)</p>
