@@ -58,5 +58,9 @@ describe("a stack", ()=>{
         expect(testStack.pop()).toBe('2');
         expect(testStack.pop()).toBe('1');
     });
-    it.todo("accepts only a positive capacity");
+    it("accepts only a positive capacity", ()=>{
+        expect(()=>{
+            testStack = stackFactory(-1);
+        }).toThrowError("Invalid Capacity");
+    });
 });
