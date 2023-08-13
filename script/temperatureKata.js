@@ -1,8 +1,5 @@
-function temperatureKata() {
-    let temp = {
-
-    };
-    return temp;
+function temperatureKata(fahrenheit) {
+    return 0;
 }
 
 module.exports = temperatureKata;
