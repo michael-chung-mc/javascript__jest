@@ -30,7 +30,12 @@ describe("a stack", ()=>{
         testStack.pop();
         expect(testStack.isEmpty()).toBe(true);
     });
-    it.todo("stack size is 0 when pushed and popped");
+    it("stack size is 0 when pushed and popped", ()=>{
+        testStack = stackFactory();
+        testStack.push();
+        testStack.pop();
+        expect(testStack.size()).toBe(0);
+    });
     it.todo("throws overflow error when pushing to a stack at full capacity");
     it.todo("throws underflow error when popping an empty stack");
     it.todo("pops the same one item when pushed");
