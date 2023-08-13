@@ -14,7 +14,10 @@ describe("a stack", ()=>{
     it("starts with stack size of 0", ()=>{
         expect(testStack.size()).toBe(0);
     });
-    it.todo("is not empty when pushed");
+    it("is not empty when pushed", ()=>{
+        testStack.push();
+        expect(testStack.isEmpty()).toBe(false);
+    });
     it.todo("stack size is 1 when pushed");
     it.todo("stack is empty when pushed and popped");
     it.todo("stack size is 0 when pushed and popped");
