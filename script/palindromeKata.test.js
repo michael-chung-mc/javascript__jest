@@ -5,3 +5,13 @@ describe("canary test", ()=>{
         expect(true).toBe(true);
     });
 })
+
+describe("palindrome", ()=> {
+    it.todo("true for mom");
+    it.todo("false for dude");
+    it.todo("true for mom mom");
+    it.todo("false for dad mom");
+    it.todo("true for whitespace");
+    it.todo("error for empty string");
+    it.todo("error for not a string");
+})
