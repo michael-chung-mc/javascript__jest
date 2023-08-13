@@ -19,6 +19,8 @@ describe("palindrome", ()=> {
     it("true for whitespace", ()=>{
         expect(isPalindrome("    ")).toBe(false);
     });
-    it.todo("error for empty string");
+    it("error for empty string", ()=>{
+        expect(()=>{isPalindrome("")}).toThrowError("Empty Input");
+    });
     it.todo("error for not a string");
 })
