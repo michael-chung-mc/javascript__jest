@@ -8,6 +8,10 @@ function stackFactory () {
             this.empty = false;
             this.count += 1;
         },
+        pop : function () {
+            this.empty = true;
+            this.count -= 1;
+        },
     }
     return stack;
 }
