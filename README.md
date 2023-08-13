@@ -35,9 +35,9 @@ Test Driven Development.
 ## Roadmap
 - [x] Fahrenheit to Celsius Conversion Kata
 - [x] Palindrome Kata
-- [ ] Stack Kata
+- [X] Stack Kata
 - [ ] Prime Factors Kata
 
 ## Acknowledgements
-* [IBM Garage](https://www.ibm.com/)
+* [IBM Cloud Garage](https://www.ibm.com/)
 <p align="right">(<a href="#readme-top">back to top </a>)</p>
