@@ -40,13 +40,17 @@ describe("a stack", ()=>{
         testStack = stackFactory();
         testStack.push();
         testStack.push();
-        expect(()=>{testStack.push()}).toThrowError("Past Capacity");
+        expect(()=>{testStack.push()}).toThrowError("Overflow: Past Capacity");
     });
     it("throws underflow error when popping an empty stack", ()=>{
         testStack = stackFactory();
-        expect(()=>{testStack.pop()}).toThrowError("Empty Can't Pop");
+        expect(()=>{testStack.pop()}).toThrowError("Underflow: Empty Can't Pop");
     });
-    it.todo("pops the same one item when pushed");
+    it("pops the same one item when pushed", ()=>{
+        testStack = stackFactory();
+        testStack.push('a');
+        expect(testStack.pop()).toBe('a');
+    });
     it.todo("pops two items with the most recent first");
     it.todo("accepts only a positive capacity");
 });
