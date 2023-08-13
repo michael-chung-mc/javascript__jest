@@ -1,4 +1,4 @@
-const stack = require('./stackKata.js')
+const stackFactory = require('./stackKata.js')
 
 describe("canary", ()=> {
     it("test testing env", ()=> {
@@ -7,7 +7,7 @@ describe("canary", ()=> {
 });
 
 describe("a stack", ()=>{
-    let testStack = stack();
+    let testStack = stackFactory();
     it("starts empty", ()=>{
         expect(testStack.isEmpty()).toBe(true);
     });
@@ -15,10 +15,15 @@ describe("a stack", ()=>{
         expect(testStack.size()).toBe(0);
     });
     it("is not empty when pushed", ()=>{
+        testStack = stackFactory();
         testStack.push();
         expect(testStack.isEmpty()).toBe(false);
     });
-    it.todo("stack size is 1 when pushed");
+    it("stack size is 1 when pushed", ()=>{
+        testStack = stackFactory();
+        testStack.push();
+        expect(testStack.size()).toBe(1);
+    });
     it.todo("stack is empty when pushed and popped");
     it.todo("stack size is 0 when pushed and popped");
     it.todo("throws overflow error when pushing to a stack at full capacity");
