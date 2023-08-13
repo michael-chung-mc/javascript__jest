@@ -36,7 +36,12 @@ describe("a stack", ()=>{
         testStack.pop();
         expect(testStack.size()).toBe(0);
     });
-    it.todo("throws overflow error when pushing to a stack at full capacity");
+    it("throws overflow error when pushing to a stack at full capacity", ()=>{
+        testStack = stackFactory();
+        testStack.push();
+        testStack.push();
+        expect(()=>{testStack.push()}).toThrowError("Past Capacity");
+    });
     it.todo("throws underflow error when popping an empty stack");
     it.todo("pops the same one item when pushed");
     it.todo("pops two items with the most recent first");

@@ -1,15 +1,13 @@
 function stackFactory () {
     let stack = {
         count : 0,
-        empty : true,
-        isEmpty : function () {return this.empty;},
+        isEmpty : function () {return this.count === 0;},
         size : function () { return this.count;},
         push : function () {
-            this.empty = false;
+            if (this.count === 2) throw new Error("Past Capacity")
             this.count += 1;
         },
         pop : function () {
-            this.empty = true;
             this.count -= 1;
         },
     }
