@@ -7,7 +7,10 @@ describe("canary", ()=> {
 });
 
 describe("a stack", ()=>{
-    it.todo("starts empty");
+    let testStack = stack();
+    it("starts empty", ()=>{
+        expect(testStack.isEmpty()).toBe(true);
+    });
     it.todo("starts with stack size of 0");
     it.todo("is not empty when pushed");
     it.todo("stack size is 1 when pushed");
