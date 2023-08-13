@@ -1,4 +1,4 @@
-const palindrome = require('./palindromeKata.js')
+const isPalindrome = require('./palindromeKata.js')
 
 describe("canary test", ()=>{
     it("test testing environment", ()=> {
@@ -7,7 +7,9 @@ describe("canary test", ()=>{
 })
 
 describe("palindrome", ()=> {
-    it.todo("true for mom");
+    it("true for mom", ()=> {
+        expect(isPalindrome("mom")).toBe(true);
+    });
     it.todo("false for dude");
     it.todo("true for mom mom");
     it.todo("false for dad mom");
