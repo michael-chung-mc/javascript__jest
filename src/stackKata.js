@@ -8,6 +8,7 @@ function stackFactory () {
             this.count += 1;
         },
         pop : function () {
+            if (this.count === 0) throw new Error("Empty Can't Pop")
             this.count -= 1;
         },
     }

@@ -42,7 +42,10 @@ describe("a stack", ()=>{
         testStack.push();
         expect(()=>{testStack.push()}).toThrowError("Past Capacity");
     });
-    it.todo("throws underflow error when popping an empty stack");
+    it("throws underflow error when popping an empty stack", ()=>{
+        testStack = stackFactory();
+        expect(()=>{testStack.pop()}).toThrowError("Empty Can't Pop");
+    });
     it.todo("pops the same one item when pushed");
     it.todo("pops two items with the most recent first");
     it.todo("accepts only a positive capacity");
