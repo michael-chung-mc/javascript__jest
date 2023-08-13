@@ -1,5 +1,5 @@
-function isPalindrome (text) {
-    return text === text.split('').reverse().join('');
+function isPalindrome (phrase) {
+    return phrase === phrase.split('').reverse().join('');
 }
 
 module.exports = isPalindrome;

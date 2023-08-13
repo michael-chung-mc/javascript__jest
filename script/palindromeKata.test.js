@@ -13,7 +13,9 @@ describe("palindrome", ()=> {
     it("false for dude", ()=> {
         expect(isPalindrome("dude")).toBe(false);
     });
-    it.todo("true for mom mom");
+    it("true for mom mom", ()=>{
+        expect(isPalindrome("mom mom")).toBe(true);
+    });
     it.todo("false for dad mom");
     it.todo("true for whitespace");
     it.todo("error for empty string");
