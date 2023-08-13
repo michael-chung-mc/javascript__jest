@@ -18,7 +18,8 @@
 </details>
 
 ## About
-The Odin Project Jest Assignment && IBM Test-driven development course
+The Odin Project Jest Assignment
+IBM Test-Driven Development Kata
 
 ### What
 
@@ -62,4 +63,3 @@ object == {
 * [The Odin Project](https://www.theodinproject.com)
 * [IBM Cloud Garage](https://www.ibm.com/)
 <p align="right">(<a href="#readme-top">back to top </a>)</p>
->>>>>>> ibm--test-driven-development/main
