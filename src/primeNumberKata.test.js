@@ -1,4 +1,4 @@
-const primeNumberFactory = require('./primeNumberKata.js')
+const primeNumber = require('./primeNumberKata.js')
 
 describe("canary", ()=> {
     it("test testing environment", ()=> {
@@ -7,7 +7,9 @@ describe("canary", ()=> {
 })
 
 describe("prime number function should", ()=> {
-    it.todo("return none for 1");
+    it("return none for 1", ()=>{
+        expect(primeNumber(1)).toEqual([]);
+    });
     it.todo("return 2 for 2");
     it.todo("return 3 for 3");
     it.todo("return 2, 2 for 4");
