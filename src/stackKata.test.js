@@ -51,6 +51,12 @@ describe("a stack", ()=>{
         testStack.push('a');
         expect(testStack.pop()).toBe('a');
     });
-    it.todo("pops two items with the most recent first");
+    it("pops two items with the most recent first", ()=>{
+        testStack = stackFactory();
+        testStack.push('1');
+        testStack.push('2');
+        expect(testStack.pop()).toBe('2');
+        expect(testStack.pop()).toBe('1');
+    });
     it.todo("accepts only a positive capacity");
 });

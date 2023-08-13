@@ -1,18 +1,15 @@
 function stackFactory () {
     let stack = {
-        count : 0,
-        element : null,
-        isEmpty : function () {return this.count === 0;},
-        size : function () { return this.count;},
+        elements : [],
+        isEmpty : function () {return this.elements.length === 0;},
+        size : function () { return this.elements.length;},
         push : function (element) {
-            if (this.count === 2) throw new Error("Overflow: Past Capacity")
-            this.element = element;
-            this.count += 1;
+            if (this.elements.length === 2) throw new Error("Overflow: Past Capacity")
+            this.elements.push(element);
         },
         pop : function () {
-            if (this.count === 0) throw new Error("Underflow: Empty Can't Pop")
-            this.count -= 1;
-            return this.element;
+            if (this.elements.length === 0) throw new Error("Underflow: Empty Can't Pop")
+            return this.elements.pop();
         },
     }
     return stack;
