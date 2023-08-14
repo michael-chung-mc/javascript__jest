@@ -1,50 +1,61 @@
-function vertex(x,y) {
-    this.x = x;
-    this.y = y;
-    this.vertices = null;
-    this.addNeighbor = function (x,y) {
-        if (this.vertices == null)
+const knight = require('./knight.js');
+
+
+
+
+function Dijkstra (adjList, start) {
+    this.graph = adjList;
+    this.src = start;
+    // find key corresponding to minimum distance of non visited
+    this.minimumDistance = function (distance, previous) {
+        let min = Infinity;
+        let minKey;
+        for (key in adjList.keys())
         {
-            this.vertices = [vertex(x,y)];
+            if (previous[key]==false && distance[key]<min)
+            {
+                min = distance[key];
+                minKey = key;
+            }
         }
-        else
+        console.log('find-min: ' + minKey);
+        return minKey;
+    }
+    // 
+    this.search = function (adjList, start) {
+        console.log('start-search');
+        let distance = new Map();
+        let previous = new Map();
+        for (let i = 0; i < adjList.keys().length; i++)
         {
-            this.vertices.push(vertex(x,y));
+            distance[adjList[i].start] = Infinity;
+            previous[adjList[i].start] = false;
         }
-    }
-}
-function board () {
-    this.getValidCell = function (x,y) {
-        return ((x >= 0 && x < 9 && y >= 0 && y < 9))
-    }
-}
-function knight (x,y) {
-    this.board = board();
-    this.pos = vertex(x,y)
-    this.setPosition = function (x,y) {
-        this.pos = vertex(x,y)
-    }
-    this.getMoves = function (x,y) {
-        let move = vertex(x,y);
-        if (board.getValidCell(x+1, y+2)) move.addNeighbot(x+1, y+2);
-        if (board.getValidCell(x+1, y-2)) move.addNeighbot(x+1, y-2);
-        if (board.getValidCell(x+2, y+1)) move.addNeighbot(x+2, y+1);
-        if (board.getValidCell(x+2, y-1)) move.addNeighbot(x+2, y-1);
-        if (board.getValidCell(x-1, y+2)) move.addNeighbot(x-1, y+2);
-        if (board.getValidCell(x-1, y-2)) move.addNeighbot(x-1, y-2);
-        if (board.getValidCell(x-2, y+1)) move.addNeighbot(x-2, y+1);
-        if (board.getValidCell(x-2, y-1)) move.addNeighbot(x-2, y-1);
-        return move;
+        distance[start] = 0
+        for (key in adjList.keys())
+        {
+            for (let j = 0; j < adjList[key].length; j++)
+            {
+                let min = this.minimumDistance(distance, previous);
+                console.log('start-search found min: ' + min);
+                if (!previous[min] && distance[i]>distance[min])
+                {
+                    distance[i] = distance[min] + 1;
+                    previous[min] = true;
+                }
+            }
+        }
+        return distance;
     }
 }
 
 function knightMoves (start, end) {
-    let sx = start[0];
-    let sy = start[1];
-    let ex = end[0];
-    let ey = end[1];
-    let k = knight(sx,sy);
-    k.getMoves(knight.pos.x,knight.pos.y);
+    console.log('in-knightmoves');
+    let k = new knight();
+    let q = k.getMoves(start[0],start[1],end);
+    console.log(q);
+    let d = new Dijkstra(q, start);
+    console.log(d.search(q,start));
 };
 
-knightMoves();
+knightMoves([3,3],[4,3]);
