@@ -24,7 +24,6 @@ Show shortest possible way to get from one square to another by outputting all s
 ### Built With
 * HTML
 * Javascript
-* CSS
 
 ## Roadmap
 - [ ] Put together a script that creates a game board and a knight.
