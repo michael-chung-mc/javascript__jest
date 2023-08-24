@@ -33,6 +33,7 @@ Test Driven Development.
 ## Roadmap
 - Data Structures
   - [x] linked list
+    -[ ] linked list unit test
 Algorithms
   - [x] A capitalize function that takes a string and returns it with the first character capitalized.
   - [x] reverseString function that takes a string and returns it reversed.
