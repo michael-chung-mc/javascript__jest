@@ -3,34 +3,32 @@
 <details>
     <summary>Table of Contents</summary>
     <ol>
-        <li>
-            <a href="#about">About This</a>
+        <li><a href="#goals">Goals</a>
             <ul>
-                <li><a href="#what">What</li>
-                <li><a href="#why">Why</li>
-                <li><a href="#how">How</li>
+                <li><a href="#about">About</li>
             </ul>
+        <li><a href="#design">Design</li>
+          <ul>
+            <li><a href="#tools">Tools</li>
+            <li><a href="#roadmap">Roadmap</li>
+          </ul>
         </li>
-        <li><a href="#roadmap">Roadmap</li>
         <li><a href="#acknowledgements">Acknowledgements</li>
     </ol>
 </details>
 
-## About
-* The Odin Project Jest Assignment
-* IBM Test-Driven Development Kata
-
-### What
+## Goals
+### About
 TDD exploration through various kata.
-
-### Why
-Test Driven Development.
-
-### How
+## Design
+### Tools
 * Javascript
 * Jest
-
-## Roadmap
+* Visual Studio Code
+* Xubuntu
+* VirtualBox
+* Git
+### Roadmap
 - Data Structures
   - [x] linked list
     -[ ] linked list unit test
@@ -49,7 +47,9 @@ Test Driven Development.
     - [x] int depth(node)
     - [x] bool balanced()
     - [x] void rebalance()
-Algorithms
+    - [x] bbst driver
+    - [ ] bbst unit test
+- Algorithms
   - [x] A capitalize function that takes a string and returns it with the first character capitalized.
   - [x] reverseString function that takes a string and returns it reversed.
   - [x] calculator object that contains functions for the basic operations: add, subtract, divide, and multiply. Each of these functions should take two numbers and return the correct calculation.
