@@ -1,4 +1,4 @@
-const fiboFactory = require('fibonacci.js');
+const fibonacciFactory = require('./fibonacci.js');
 
 describe("canary", ()=>{
     it("test testing env",()=>{
@@ -7,19 +7,40 @@ describe("canary", ()=>{
 });
 
 describe("fibonacci should", ()=>{
-    it("return 0 for 32",()=>{
-        expect(fToC(32)).toBe(0);
+    const fibonacci = fibonacciFactory();
+    let ifibo0 = fibonacci.fibonacciIterative(0);
+    let rfibo0 = fibonacci.fibonacciRecursive(0);
+    let ifibo1 = fibonacci.fibonacciIterative(1);
+    let rfibo1 = fibonacci.fibonacciRecursive(1);
+    let ifibo2 = fibonacci.fibonacciIterative(2);
+    let rfibo2 = fibonacci.fibonacciRecursive(2);
+    let ifibo3 = fibonacci.fibonacciIterative(3);
+    let rfibo3 = fibonacci.fibonacciRecursive(3);
+    let ifibo4 = fibonacci.fibonacciIterative(4);
+    let rfibo4 = fibonacci.fibonacciRecursive(4);
+    it("fibo(0) = []",()=>{
+        expect(ifibo0).toStrictEqual([]);
+        expect(rfibo0).toStrictEqual([]);
+        expect(ifibo0).toStrictEqual(rfibo0);
     });
-    it("return 10 for 50",()=>{
-        expect(fToC(50)).toBe(10);
+    it("fibo(1) = [0]",()=>{
+        expect(ifibo1).toStrictEqual([0]);
+        expect(rfibo1).toStrictEqual([0]);
+        expect(ifibo1).toStrictEqual(rfibo1);
     });
-    it("return 100 for 212",()=>{
-        expect(fToC(212)).toBe(100);
+    it("fibo(2) = [0,1]",()=>{
+        expect(ifibo2).toStrictEqual([0,1]);
+        expect(rfibo2).toStrictEqual([0,1]);
+        expect(ifibo2).toStrictEqual(rfibo2);
     });
-    it("return -40 for -40",()=>{
-        expect(fToC(-40)).toBe(-40);
+    it("fibo(3) = [0,1,1]",()=>{
+        expect(ifibo3).toStrictEqual([0,1,1]);
+        expect(rfibo3).toStrictEqual([0,1,1]);
+        expect(ifibo3).toStrictEqual(rfibo3);
     });
-    it("return -273.15 for -459.67",()=>{
-        expect(fToC(-459.67)).toBe(-273.15);
+    it("fibo(4) = [0,1,1,2]",()=>{
+        expect(ifibo4).toStrictEqual([0,1,1,2]);
+        expect(rfibo4).toStrictEqual([0,1,1,2]);
+        expect(ifibo4).toStrictEqual(rfibo4);
     });
 });
