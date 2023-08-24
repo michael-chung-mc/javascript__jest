@@ -31,7 +31,7 @@ TDD exploration through various kata.
 ### Roadmap
 - Data Structures
   - [x] linked list
-    -[ ] linked list unit test
+    - [ ] linked list unit test
   - [x] balanced binary search tree
     - [x] node class
     - [x] tree class
