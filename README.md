@@ -31,32 +31,34 @@ Test Driven Development.
 * Jest
 
 ## Roadmap
-- [x] A capitalize function that takes a string and returns it with the first character capitalized.
-- [x] reverseString function that takes a string and returns it reversed.
-- [x] calculator object that contains functions for the basic operations: add, subtract, divide, and multiply. Each of these functions should take two numbers and return the correct calculation.
-- [x] caesarCipher function that takes a string and a shift factor and returns it with each character “shifted”. Read more about how a Caesar cipher works on this website.
-  - [x] Don’t forget to test wrapping from z to a.
-  - [x] Don’t forget to test keeping the same case.
-  - [x] Don’t forget to test punctuation!
-- [x] An analyzeArray function that takes an array of numbers and returns an object with the following properties: average, min, max, and length.
-```
-const object = analyzeArray([1,8,3,4,2,6]);
+- Data Structures
+  - [x] linked list
+Algorithms
+  - [x] A capitalize function that takes a string and returns it with the first character capitalized.
+  - [x] reverseString function that takes a string and returns it reversed.
+  - [x] calculator object that contains functions for the basic operations: add, subtract, divide, and multiply. Each of these functions should take two numbers and return the correct calculation.
+  - [x] caesarCipher function that takes a string and a shift factor and returns it with each character “shifted”. Read more about how a Caesar cipher works on this website.
+    - [x] Don’t forget to test wrapping from z to a.
+    - [x] Don’t forget to test keeping the same case.
+    - [x] Don’t forget to test punctuation!
+  - [x] An analyzeArray function that takes an array of numbers and returns an object with the following properties: average, min, max, and length.
+  ```
+  const object = analyzeArray([1,8,3,4,2,6]);
 
-object == {
-  average: 4,
-  min: 1,
-  max: 8,
-  length: 6
-};
-```
-- [x] Iterative Fibonacci
-- [x] Recursive Fibonacci
-- [x] mergesort
-- [x] Fahrenheit to Celsius Conversion Kata
-- [x] Palindrome Kata
-- [X] Stack Kata
-- [x] Prime Factors Kata
-
+  object == {
+    average: 4,
+    min: 1,
+    max: 8,
+    length: 6
+  };
+  ```
+  - [x] Iterative Fibonacci
+  - [x] Recursive Fibonacci
+  - [x] mergesort
+  - [x] Fahrenheit to Celsius Conversion Kata
+  - [x] Palindrome Kata
+  - [X] Stack Kata
+  - [x] Prime Factors Kata
 ## Acknowledgements
 * [The Odin Project](https://www.theodinproject.com)
 * [IBM Cloud Garage](https://www.ibm.com/)
