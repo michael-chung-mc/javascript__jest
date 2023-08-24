@@ -34,6 +34,21 @@ Test Driven Development.
 - Data Structures
   - [x] linked list
     -[ ] linked list unit test
+  - [x] balanced binary search tree
+    - [x] node class
+    - [x] tree class
+    - [x] build_tree(arr[])
+    - [x] insert()
+    - [x] delete()
+    - [x] find()
+    - [x] level_order(func)
+    - [x] arr inorder(func)
+    - [x] arr preorder(func)
+    - [x] arr postorder(func)
+    - [x] int height(node)
+    - [x] int depth(node)
+    - [x] bool balanced()
+    - [x] void rebalance()
 Algorithms
   - [x] A capitalize function that takes a string and returns it with the first character capitalized.
   - [x] reverseString function that takes a string and returns it reversed.
