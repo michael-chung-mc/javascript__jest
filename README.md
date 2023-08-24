@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # test-driven-development--jest
 <a name="readme-top"></a>
 <details>
@@ -52,6 +51,7 @@ object == {
 ```
 - [x] Iterative Fibonacci
 - [x] Recursive Fibonacci
+- [x] mergesort
 - [x] Fahrenheit to Celsius Conversion Kata
 - [x] Palindrome Kata
 - [X] Stack Kata
