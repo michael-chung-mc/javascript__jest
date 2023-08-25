@@ -1,4 +1,4 @@
-function edgeFactory(startNode=null,endNode=null,edgeWeight=0) {
+function edgeFactory(startNode=null,endNode=null,edgeWeight=1) {
     let start = startNode;
     let end = endNode;
     let weight = edgeWeight;
