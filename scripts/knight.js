@@ -1,4 +1,5 @@
 const gameBoardFactory = require('./gameBoard.js')
+const edge = require('./edge.js');
 
 function Vertex(x,y) {
     this.x = x;
@@ -6,14 +7,6 @@ function Vertex(x,y) {
     this.getX = function () { return this.x; }
     this.getY = function () { return this.y; }
     this.getPosition = function () { return [this.x,this.y]; }
-}
-function Edge(start,end,weight) {
-    this.start = start;
-    this.end = end;
-    this.weight = weight;
-    this.getStart = function () { return this.start; }
-    this.getEnd = function () { return this.end; }
-    this.getWeight = function () { return this.weight; }
 }
 
 function knightFactory () {
@@ -24,7 +17,7 @@ function knightFactory () {
         addMove : function (start,end)
         {
             //console.log(`${[start, end]}`);
-            this.moves[start] = new Edge(start,end,1);
+            this.moves[start] = new edge(start,end,1);
         },
         getMoves : function (x,y) {
             console.log('get-moves');
