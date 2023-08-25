@@ -1,4 +1,4 @@
-const Vertex = require('./main.js');
+const node = require('./node.js');
 
 describe('canary', ()=> {
     it('test testing environment', ()=>{

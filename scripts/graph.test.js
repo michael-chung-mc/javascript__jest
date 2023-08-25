@@ -1,4 +1,4 @@
-const dijkstra = require('./dijkstra.js');
+const graph = require('./graph.js');
 
 describe("canary", ()=> {
     it("test testing env", () => {

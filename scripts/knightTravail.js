@@ -6,8 +6,7 @@ function knightMoves (start, end) {
     let k = new knight();
     let q = k.getMoves(start[0],start[1],end);
     console.log(q);
-    let d = dijkstra(q, start);
-    console.log(d.search(q,start));
+    console.log(dijkstra(q,start));
 };
 
 knightMoves([3,3],[4,3]);
