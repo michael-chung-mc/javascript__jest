@@ -1,4 +1,4 @@
-const gameBoardFactory = require('./gameBoard.js')
+const gameBoardFactory = require('./board.js')
 const edge = require('./edge.js');
 
 function Vertex(x,y) {
