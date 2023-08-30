@@ -48,7 +48,7 @@
 <details>
 <summary>knight travails</summary>
 
--[x] knight travials mvp
+-[x] knight travails mvp
     - [x] finds path
     - [ ] visualization
 </details>
