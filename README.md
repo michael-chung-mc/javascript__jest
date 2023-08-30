@@ -1,5 +1,4 @@
 # algorithm_visualizer
-# practice__html_css__javascript
 <a name="readme-top"></a>
 <details>
     <summary>Table of Contents</summary>
@@ -28,12 +27,16 @@
 </details>
 
 ## Goals
-DSA study aid
 ### About
 ### Preview
 ## Design
 ### Requirements
 ### Tools
+    * React
+    * ViteJS
+    * Jest
+    * React-Testing-Library
+### Roadmap
 * HTML
 * Javascript
 * Jest
@@ -42,7 +45,14 @@ DSA study aid
 * VirtualBox
 * Git
 ### Roadmap
-- [x] knight Travails
+<details>
+<summary>knight travails</summary>
+
+-[x] knight travials mvp
+    - [x] finds path
+    - [ ] visualization
+</details>
+
 ## Usage
 ### Install
 ### Run

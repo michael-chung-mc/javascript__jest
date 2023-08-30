@@ -2,6 +2,7 @@ const node = require('./node.js');
 const edge = require('./edge.js');
 
 function graphFactory () {
+    let size = 0;
     let edges = new Set();
     let vertices = new Set();
     let weights = new Map();
@@ -49,6 +50,35 @@ function graphFactory () {
         };
         return false;
     };
+    function getSize () {
+        return size;
+    }
+    function getWeight (start,end) {
+        for (const [edge,weight] of weights.entries())
+        {
+            if (edge.start == start && edge.end == end)
+            {
+                return weight;
+            };
+        };
+        return -1;
+    }
+    function getVertices () {
+        let arr = [];
+        for (const vertex of vertices.values())
+        {
+            arr.push(vertex);
+        };
+        return arr;
+    }
+    function getEdges () {
+        let arr = [];
+        for (const edge of edges.values())
+        {
+            arr.push(edge);
+        };
+        return arr;
+    }
     function insert (startValue,endValue,weight)
     {
         let w = weight;
@@ -79,18 +109,25 @@ function graphFactory () {
         edges.add(e);
         if (!vertices.has(startValue)) {vertices.add(startValue);};
         if (!vertices.has(endValue)) {vertices.add(endValue);};
+        size=size+1;
+        // console.log(size);
         // console.log(edges);
         // console.log(vertices);
         // console.log(weights);
         // console.log(edgesList);
     };
     return {
+        size,
         edges,
         weights,
         edgesList,
         checkEdges,
         checkVertices,
         checkEdgesList,
+        getSize,
+        getWeight,
+        getVertices,
+        getEdges,
         insert,
     };
 }

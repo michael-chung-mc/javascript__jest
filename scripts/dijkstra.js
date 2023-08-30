@@ -1,40 +1,41 @@
-// find key corresponding to minimum distance of non visited
-function minimumDistance (distance, previous) {
-    let min = Infinity;
-    let minKey;
-    for (key in adjList.keys())
-    {
-        if (previous[key]==false && distance[key]<min)
+function dijkstraFactory () {
+    function dijkstraLinear (g, start) {
+        let distance = new Map();
+        let previous = new Map();
+        let vertices = g.getVertices();
+        console.log(JSON.stringify(vertices));
+        for (let i = 0; i < vertices.length; i++ )
         {
-            min = distance[key];
-            minKey = key;
+            distance.set(vertices[i],Infinity);
+            previous.set(vertices[i],false);
         }
-    }
-    return minKey;
-}
-
-function dijkstra (adjList, start) {
-    let distance = new Map();
-    let previous = new Map();
-    for (let i = 0; i < adjList.keys().length; i++)
-    {
-        distance[adjList[i]] = Infinity;
-        previous[adjList[i]] = false;
-    }
-    distance[start] = 0
-    for (key in adjList.keys())
-    {
-        for (let j = 0; j < adjList[key].length; j++)
+        distance.set(start,0);
+        for (let i = 0; i < vertices.length; i++)
         {
-            let min = minimumDistance(distance, previous);
-            if (!previous[min] && distance[i]>distance[min])
+            let min = -1;
+            for (const vertex of distance.keys())
             {
-                distance[i] = distance[min] + 1;
-                previous[min] = true;
+                if (previous[vertex]==false && (min==-1 || distance[vertex]<distance[min]))
+                {
+                    min = vertex;
+                }
+            }
+            //if (min == Infinity) {break;}
+            //previous[min] = true;
+            let edges = g.getEdges();
+            for (let j = 0; j < edges.length; j++)
+            {
+                if (!previous[min] && distance[edges[j].start]>distance[min]+g.getWeight(edges[j].start,edges[j].end))
+                {
+                    distance.set(edges[j].start, distance[min] + g.getWeight(edges[j].start,edges[j].end));
+                    previous.set(min,true);
+                }
             }
         }
+        console.log(distance);
+        return distance;
     }
-    return distance;
+    return {dijkstraLinear,}
 }
 
-module.exports = dijkstra;
+module.exports = dijkstraFactory;
