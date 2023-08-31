@@ -29,7 +29,9 @@ TDD exploration through various kata.
 * VirtualBox
 * Git
 ### Roadmap
-- Data Structures
+<details>
+<summary>Data Structures</summary>
+
   - [x] linked list
     - [ ] linked list unit test
   - [x] balanced binary search tree
@@ -49,7 +51,11 @@ TDD exploration through various kata.
     - [x] void rebalance()
     - [x] bbst driver
     - [ ] bbst unit test
-- Algorithms
+</details>
+
+<details>
+<summary>Algorithms</summary>
+
   - [x] A capitalize function that takes a string and returns it with the first character capitalized.
   - [x] reverseString function that takes a string and returns it reversed.
   - [x] calculator object that contains functions for the basic operations: add, subtract, divide, and multiply. Each of these functions should take two numbers and return the correct calculation.
@@ -75,6 +81,9 @@ TDD exploration through various kata.
   - [x] Palindrome Kata
   - [X] Stack Kata
   - [x] Prime Factors Kata
+  - [x] knight travails mvp
+</details>
+
 ## Acknowledgements
 * [The Odin Project](https://www.theodinproject.com)
 * [IBM Cloud Garage](https://www.ibm.com/)
