@@ -1,4 +1,4 @@
-# practice__javascript__jest
+# wip__javascript__jest
 <a name="readme-top"></a>
 <details>
     <summary>Table of Contents</summary>
@@ -27,8 +27,8 @@
 </details>
 
 ## Goals
+Practice Javascript with Jest for TDD
 ### About
-TDD exploration through various kata.
 ### Preview
 ## Design
 ### Requirements
